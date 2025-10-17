@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.lms.dto.AttendanceManagementDto;
 import jp.co.sss.lms.dto.LoginUserDto;
-import jp.co.sss.lms.entity.TStudentAttendance;
 import jp.co.sss.lms.form.AttendanceForm;
 import jp.co.sss.lms.service.StudentAttendanceService;
 import jp.co.sss.lms.util.Constants;
@@ -30,8 +29,6 @@ public class AttendanceController {
 	private StudentAttendanceService studentAttendanceService;
 	@Autowired
 	private LoginUserDto loginUserDto;
-	@Autowired
-	private TStudentAttendance tStudentAttendance;
 
 	/**
 	 * 勤怠管理画面 初期表示
@@ -50,11 +47,16 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 
-		//吉田知生 Task.29
-		boolean notEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId(), tStudentAttendance.getDeleteFlg(),
-				tStudentAttendance.getTrainingDate());
-		
-		model.addAttribute("notEnterCount",notEnterCount);
+		/**
+		 * 勤怠管理画面 未入力の勤怠がある場合のポップアップ表示
+		 * 
+		 * @param lmsUserId
+		 * @return 勤怠管理画面
+		 */
+		//吉田知生 Task.29 未入力確認処理
+		boolean notEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId());
+
+		model.addAttribute("notEnterCount", notEnterCount);
 
 		return "attendance/detail";
 	}

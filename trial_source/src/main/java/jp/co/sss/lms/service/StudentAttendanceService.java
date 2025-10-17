@@ -333,16 +333,25 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
-	
-	// 吉田知生 - Task.29
-	public boolean notEnterCount(Integer lmsUserId, Short deleteFlg,
-			Date trainingDate) {
-		if(tStudentAttendanceMapper.notEnterCount(lmsUserId, deleteFlg, trainingDate) <= 1) {
+
+	/**
+	 * 未入力の場合のポップアップ表示
+	 * 
+	 * @author  吉田知生 - Task.29
+	 * @param lmsUserId
+	 * @return true
+	 * @return false
+	 */
+	public boolean notEnterCount(Integer lmsUserId) {
+		final int maxNotEnterCount = 1;
+		Date trainingDate = attendanceUtil.getTrainingDate();
+		//notEnterCount(未入力)が１以上の場合true,該当しない場合false
+		if (tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE, trainingDate) <= maxNotEnterCount) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
 
 }
