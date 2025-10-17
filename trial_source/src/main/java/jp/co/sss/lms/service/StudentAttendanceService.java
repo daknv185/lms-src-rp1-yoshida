@@ -337,7 +337,7 @@ public class StudentAttendanceService {
 	/**
 	 * 未入力の場合のポップアップ表示
 	 * 
-	 * @author  吉田知生 - Task.29
+	 * @author  吉田知生 - Task.25
 	 * @param lmsUserId
 	 * @return true
 	 * @return false

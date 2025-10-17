@@ -53,10 +53,10 @@ public class AttendanceController {
 		 * @param lmsUserId
 		 * @return 勤怠管理画面
 		 */
-		//吉田知生 Task.29 未入力確認処理
-		boolean notEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId());
+		//吉田知生 Task.25 未入力確認処理
+		boolean hasEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId());
 
-		model.addAttribute("notEnterCount", notEnterCount);
+		model.addAttribute("notEnterCount", hasEnterCount);
 
 		return "attendance/detail";
 	}
