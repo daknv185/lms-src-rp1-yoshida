@@ -333,5 +333,16 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
+	
+	// 吉田知生 - Task.29
+	public boolean notEnterCount(Integer lmsUserId, Short deleteFlg,
+			Date trainingDate) {
+		if(tStudentAttendanceMapper.notEnterCount(lmsUserId, deleteFlg, trainingDate) <= 1) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 
 }

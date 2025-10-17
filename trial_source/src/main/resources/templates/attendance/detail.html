@@ -6,7 +6,8 @@
 <title>勤怠情報変更｜LMS</title>
 </head>
 <body>
-
+	<!-- 吉田知生 – Task.29 -->
+	<hidden id="notEnterCount" th:text="${notEnterCount}"></hidden>
 	<!-- 完了メッセージ -->
 	<th:block th:if="${not #strings.isEmpty(message)}" id="message">
 		<div class="alert alert-info alert-dismissible fade in" role="alert">
@@ -87,6 +88,7 @@
 			return hours + ':' + minutes;
 		}
 	</script>
+	<script src="js/test.js"></script>
 
 </body>
 </html>
