@@ -47,6 +47,7 @@ public class AttendanceUtil {
 	 */
 	private AttendanceStatusEnum getStatus(TrainingTime trainingStartTime,
 			TrainingTime trainingEndTime, TrainingTime workStartTime, TrainingTime workEndTime) {
+
 		// 定時が不明な場合、NONEを返却する
 		if (workStartTime == null || workStartTime.isBlank() || workEndTime == null
 				|| workEndTime.isBlank()) {
@@ -143,9 +144,8 @@ public class AttendanceUtil {
 		for (int i = 0; i < 23; i++) {
 
 			int hour = i;
-			String time;
+			String time = String.valueOf(hour);
 
-			time = String.valueOf(hour);
 			map.put(hour, time);
 
 		}
@@ -157,15 +157,14 @@ public class AttendanceUtil {
 	 * @auhor  吉田知生 - Task.26
 	 * @return １分刻みの分マップ
 	 */
-	public LinkedHashMap<Integer, String> getMnuteMap() {
+	public LinkedHashMap<Integer, String> getMinuteMap() {
 		LinkedHashMap<Integer, String> map = new LinkedHashMap<>();
 		map.put(null, "");
 		for (int i = 0; i < 59; i++) {
 
 			int minute = i;
-			String time;
+			String time = String.valueOf(minute);
 
-			time = String.valueOf(minute);
 			map.put(minute, time);
 
 		}
@@ -187,4 +186,41 @@ public class AttendanceUtil {
 		return false;
 	}
 
+	/**
+	 * 時間(時)の切り出し
+	 * @auhor  吉田知生 - Task.26
+	 * @param 開始時刻or終了時刻
+	 * @return 出退勤時間(時間)
+	 */
+	public Integer getHour(String time) {
+		if (time != null && !time.isEmpty()) {
+			String[] parts = time.split(":");
+
+			Integer hours = Integer.valueOf(parts[0]);
+
+			return hours;
+		} else {
+			return null;
+		}
+
+	}
+
+	/**
+	 * 時間のプルダウンマップを作成
+	 * @auhor  吉田知生 - Task.26
+	 * @param 開始時刻or終了時刻
+	 * @return 出退勤時間(分)
+	 */
+	public Integer getMinute(String time) {
+		if (time != null && !time.isEmpty()) {
+			String[] parts = time.split(":");
+
+			Integer minute = Integer.valueOf(parts[1]);
+
+			return minute;
+		} else {
+			return null;
+		}
+
+	}
 }

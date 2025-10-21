@@ -219,7 +219,11 @@ public class StudentAttendanceService {
 		attendanceForm.setUserName(loginUserDto.getUserName());
 		attendanceForm.setLeaveFlg(loginUserDto.getLeaveFlg());
 		attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
+		//吉田知生 - Task.26
+		attendanceForm.setHourTimes(attendanceUtil.getHourMap());
 
+		//吉田知生 - Task.26
+		attendanceForm.setMinuteTimes(attendanceUtil.getMinuteMap());
 		// 途中退校している場合のみ設定
 		if (loginUserDto.getLeaveDate() != null) {
 			attendanceForm
@@ -238,6 +242,12 @@ public class StudentAttendanceService {
 			dailyAttendanceForm
 					.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
 			dailyAttendanceForm.setTrainingEndTime(attendanceManagementDto.getTrainingEndTime());
+			dailyAttendanceForm.setTrainingStartTimeHour(attendanceUtil.getHour(attendanceManagementDto.getTrainingStartTime()));
+			dailyAttendanceForm.setTrainingStartTimeMinute(attendanceUtil.getMinute(attendanceManagementDto.getTrainingStartTime()));
+			dailyAttendanceForm.setTrainingEndTimeHour(attendanceUtil.getHour(attendanceManagementDto.getTrainingEndTime()));
+			dailyAttendanceForm.setTrainingEndTimeMinute(attendanceUtil.getMinute(attendanceManagementDto.getTrainingEndTime()));
+			
+			
 			if (attendanceManagementDto.getBlankTime() != null) {
 				dailyAttendanceForm.setBlankTime(attendanceManagementDto.getBlankTime());
 				dailyAttendanceForm.setBlankTimeValue(String.valueOf(
@@ -346,7 +356,8 @@ public class StudentAttendanceService {
 		final int maxNotEnterCount = 1;
 		Date trainingDate = attendanceUtil.getTrainingDate();
 		//notEnterCount(未入力)が１以上の場合true,該当しない場合false
-		if (tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE, trainingDate) <= maxNotEnterCount) {
+		if (tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE,
+				trainingDate) <= maxNotEnterCount) {
 			return true;
 		} else {
 			return false;
