@@ -144,7 +144,7 @@ public class AttendanceUtil {
 		for (int i = 0; i < 23; i++) {
 
 			int hour = i;
-			String time = String.valueOf(hour);
+			String time =  String.format("%02d",hour);
 
 			map.put(hour, time);
 
@@ -163,7 +163,7 @@ public class AttendanceUtil {
 		for (int i = 0; i < 59; i++) {
 
 			int minute = i;
-			String time = String.valueOf(minute);
+			String time = String.format("%02d",minute);
 
 			map.put(minute, time);
 

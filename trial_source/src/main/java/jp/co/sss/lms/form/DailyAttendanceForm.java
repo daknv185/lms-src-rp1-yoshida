@@ -24,9 +24,6 @@ public class DailyAttendanceForm {
 	//吉田知生 - Task.26
 	/** 出勤時間 (分)*/
 	private Integer trainingStartTimeMinute;
-	//吉田知生 - Task.26
-	/** 出勤時間 (画面表示用)*/
-	private String trainingStartTimeValue;
 	/** 退勤時間 */
 	private String trainingEndTime;
 	//吉田知生 - Task.26
@@ -35,9 +32,6 @@ public class DailyAttendanceForm {
 	//吉田知生 - Task.26
 	/** 出勤時間 (分)*/
 	private Integer trainingEndTimeMinute;
-	//吉田知生 - Task.26
-	/** 退勤時間 (画面表示用)*/
-	private String trainingEndTimeValue;
 	/** 中抜け時間 */
 	private Integer blankTime;
 	/** 中抜け時間（画面表示用） */
