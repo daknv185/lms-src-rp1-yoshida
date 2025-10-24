@@ -33,9 +33,9 @@ public class AttendanceForm {
 	private List<DailyAttendanceForm> attendanceList;
 	//吉田知生 - Task.26
 	/** 時間マップ(プルダウン) */
-	private LinkedHashMap<Integer,String> hourTimes;
+	private LinkedHashMap<Integer, String> hourTimes;
 	//吉田知生 - Task.26
 	/** 分マップ(プルダウン) */
-	private LinkedHashMap<Integer,String> minuteTimes;
-	
-	}
+	private LinkedHashMap<Integer, String> minuteTimes;
+
+}

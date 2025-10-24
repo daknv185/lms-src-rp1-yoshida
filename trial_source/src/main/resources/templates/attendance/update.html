@@ -59,10 +59,10 @@
 								<td class="w160">[[${dailyAttendanceForm.dispTrainingDate}]]</td>
 								<td class="w300">[[${dailyAttendanceForm.sectionName}]]</td>
 								<td class="w70">
+									<!-- 吉田知生 -  Task.26 -->
 									<select th:name="|attendanceList[${stat.index}].trainingStartTimeHour|"
 										class="form-control">
 										<option th:each="hourTime : ${attendanceForm.hourTimes}"
-											th:if="${hourTime != null and hourTime.key != null}"
 											th:value="${hourTime.key}" th:text="${hourTime.value}"
 											th:selected="${hourTime.key == dailyAttendanceForm.trainingStartTimeHour}">
 										</option>
@@ -72,10 +72,10 @@
 									:
 								</td>
 								<td  class="w70">
+									<!-- 吉田知生 -  Task.26 -->
 									<select th:name="|attendanceList[${stat.index}].trainingStartTimeMinute|"
 										class="form-control">
 										<option th:each="minuteTime : ${attendanceForm.minuteTimes}"
-											th:if="${minuteTime != null and minuteTime.key != null}"
 											th:value="${minuteTime.key}" th:text="${minuteTime.value}"
 											th:selected="${minuteTime.key == dailyAttendanceForm.trainingStartTimeMinute}">
 										</option>
@@ -86,7 +86,6 @@
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeHour|"
 										class="form-control">
 										<option th:each="hourTime : ${attendanceForm.hourTimes}"
-											th:if="${hourTime != null and hourTime.key != null}"
 											th:value="${hourTime.key}" th:text="${hourTime.value}"
 											th:selected="${hourTime.key == dailyAttendanceForm.trainingEndTimeHour}">
 										</option>
@@ -99,7 +98,6 @@
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|"
 										class="form-control">
 										<option th:each="minuteTime : ${attendanceForm.minuteTimes}"
-											th:if="${minuteTime != null and minuteTime.key != null}"
 											th:value="${minuteTime.key}" th:text="${minuteTime.value}"
 											th:selected="${minuteTime.key == dailyAttendanceForm.trainingEndTimeMinute}">
 										</option>

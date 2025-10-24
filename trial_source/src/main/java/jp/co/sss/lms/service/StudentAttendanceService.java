@@ -281,9 +281,11 @@ public class StudentAttendanceService {
 	public String update(AttendanceForm attendanceForm) throws ParseException {
 
 		//吉田知生 - Task.26
+		//拡張For文を用いて、ListへDailiAttendanceFormの内容を代入
 		for (DailyAttendanceForm dailyForm : attendanceForm.getAttendanceList()) {
-			if (dailyForm.getTrainingStartTimeHour() != 0 || dailyForm.getTrainingStartTimeMinute() != 0) {
-
+			//出勤/退勤時間が未入力の場合、空欄で送信
+			if (dailyForm.getTrainingStartTimeHour() != null || dailyForm.getTrainingStartTimeMinute() != null) {
+				//出勤時間と退勤時間をhh:mmへ形式設定
 				dailyForm.setTrainingStartTime(
 						dailyForm.getTrainingStartTimeHour() + ":" + dailyForm.getTrainingStartTimeMinute());
 				dailyForm.setTrainingEndTime(
@@ -362,7 +364,7 @@ public class StudentAttendanceService {
 	}
 
 	/**
-	 * 未入力の場合のポップアップ表示
+	 * 未入力の場合のポップアップ表示(trueだった場合ポップアップを表示)
 	 * 
 	 * @author  吉田知生 - Task.25
 	 * @param lmsUserId
