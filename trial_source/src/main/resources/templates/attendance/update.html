@@ -82,7 +82,7 @@
 									</select>
 								</td>
 								<td class="w70">
-									
+									<!-- 吉田知生 -  Task.26 -->
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeHour|"
 										class="form-control">
 										<option th:each="hourTime : ${attendanceForm.hourTimes}"
@@ -95,6 +95,7 @@
 									:
 								</td>
 								<td  class="w70">
+									<!-- 吉田知生 -  Task.26 -->
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|"
 										class="form-control">
 										<option th:each="minuteTime : ${attendanceForm.minuteTimes}"
