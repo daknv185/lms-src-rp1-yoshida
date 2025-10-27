@@ -47,17 +47,11 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-
-		/**
-		 * 勤怠管理画面 未入力の勤怠がある場合のポップアップ表示
-		 * 
-		 * @param lmsUserId
-		 * @return 勤怠管理画面
-		 */
+		
 		//吉田知生 Task.25 未入力確認処理
-		boolean hasEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId());
+		boolean hasBlank = studentAttendanceService.hasBlankCheck(loginUserDto.getLmsUserId());
 
-		model.addAttribute("notEnterCount", hasEnterCount);
+		model.addAttribute("hasBlank", hasBlank);
 
 		return "attendance/detail";
 	}
