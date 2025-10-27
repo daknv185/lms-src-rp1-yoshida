@@ -364,19 +364,18 @@ public class StudentAttendanceService {
 	}
 
 	/**
-	 * 未入力の場合のポップアップ表示(trueだった場合ポップアップを表示)
+	 * 未入力の確認(未入力がある場合true、ない場合falseをreturn)
 	 * 
 	 * @author  吉田知生 - Task.25
 	 * @param lmsUserId
 	 * @return true
 	 * @return false
 	 */
-	public boolean notEnterCount(Integer lmsUserId) {
-		final int maxNotEnterCount = 1;
+	public boolean hasBlankCheck(Integer lmsUserId) {
 		Date trainingDate = attendanceUtil.getTrainingDate();
-		//notEnterCount(未入力)が１以上の場合true,該当しない場合false
+		//blank(未入力)が1件以上ある場合true
 		if (tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE,
-				trainingDate) <= maxNotEnterCount) {
+				trainingDate) > 0) {
 			return true;
 		} else {
 			return false;
