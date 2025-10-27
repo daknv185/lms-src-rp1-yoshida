@@ -28,7 +28,7 @@
 				<table class="table table-hover dataTable no-footer">
 					<thead style="display: block;">
 						<tr>
-							<th class="w140">日付</th>
+							<th class="w120">日付</th>
 							<th class="w200">コース内容</th>
 							<th class="w60"></th>
 							<th class="w200" colspan="3">出勤</th>
@@ -59,10 +59,13 @@
 								<td class="w160">[[${dailyAttendanceForm.dispTrainingDate}]]</td>
 								<td class="w260">[[${dailyAttendanceForm.sectionName}]]</td>
 								<!-- 吉田知生 -  Task.28 -->
-								<td class="w60"><input type="button" class="btn btn-success" value="定時" th:onclick="|addTime(${stat.index})|"></td>
-								<td class="w70">
+								<td class="w60"><input type="button" class="btn btn-success" value="定時"
+										th:onclick="|addTime(${stat.index})|"></td>
+								<td class="w80">
 									<!-- 吉田知生 -  Task.26 -->
-									<select th:id="|startTime${stat.index}|" th:name="|attendanceList[${stat.index}].trainingStartTimeHour|"
+									<!-- 吉田知生 -  Task.28 -->
+									<select th:id="|startTime${stat.index}|"
+										th:name="|attendanceList[${stat.index}].trainingStartTimeHour|"
 										class="form-control">
 										<option th:each="hourTime : ${attendanceForm.hourTimes}"
 											th:value="${hourTime.key}" th:text="${hourTime.value}"
@@ -73,9 +76,11 @@
 								<td>
 									:
 								</td>
-								<td  class="w70">
+								<td class="w80">
 									<!-- 吉田知生 -  Task.26 -->
-									<select th:id="|startMinute${stat.index}|" th:name="|attendanceList[${stat.index}].trainingStartTimeMinute|"
+									<!-- 吉田知生 -  Task.28 -->
+									<select th:id="|startMinute${stat.index}|"
+										th:name="|attendanceList[${stat.index}].trainingStartTimeMinute|"
 										class="form-control">
 										<option th:each="minuteTime : ${attendanceForm.minuteTimes}"
 											th:value="${minuteTime.key}" th:text="${minuteTime.value}"
@@ -83,9 +88,11 @@
 										</option>
 									</select>
 								</td>
-								<td class="w70">
+								<td class="w80">
 									<!-- 吉田知生 -  Task.26 -->
-									<select th:id="|endTime${stat.index}|" th:name="|attendanceList[${stat.index}].trainingEndTimeHour|"
+									<!-- 吉田知生 -  Task.28 -->
+									<select th:id="|endTime${stat.index}|"
+										th:name="|attendanceList[${stat.index}].trainingEndTimeHour|"
 										class="form-control">
 										<option th:each="hourTime : ${attendanceForm.hourTimes}"
 											th:value="${hourTime.key}" th:text="${hourTime.value}"
@@ -96,9 +103,11 @@
 								<td>
 									:
 								</td>
-								<td  class="w70">
+								<td class="w80">
 									<!-- 吉田知生 -  Task.26 -->
-									<select th:id="|endMinute${stat.index}|" th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|"
+									<!-- 吉田知生 -  Task.28 -->
+									<select th:id="|endMinute${stat.index}|"
+										th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|"
 										class="form-control">
 										<option th:each="minuteTime : ${attendanceForm.minuteTimes}"
 											th:value="${minuteTime.key}" th:text="${minuteTime.value}"
