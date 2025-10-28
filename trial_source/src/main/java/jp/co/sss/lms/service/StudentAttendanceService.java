@@ -42,6 +42,8 @@ public class StudentAttendanceService {
 	@Autowired
 	private LoginUserDto loginUserDto;
 	@Autowired
+	private TrainingTime trainingTime;
+	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
 
 	/**
@@ -285,11 +287,27 @@ public class StudentAttendanceService {
 		for (DailyAttendanceForm dailyForm : attendanceForm.getAttendanceList()) {
 			//出勤/退勤時間が未入力の場合、空欄で送信
 			if (dailyForm.getTrainingStartTimeHour() != null || dailyForm.getTrainingStartTimeMinute() != null) {
-				//出勤時間と退勤時間をhh:mmへ形式設定
+				
+				/*出勤時間と退勤時間をhh:mmへ形式設定 
 				dailyForm.setTrainingStartTime(
 						dailyForm.getTrainingStartTimeHour() + ":" + dailyForm.getTrainingStartTimeMinute());
 				dailyForm.setTrainingEndTime(
-						dailyForm.getTrainingEndTimeHour() + ":" + dailyForm.getTrainingEndTimeMinute());
+						dailyForm.getTrainingEndTimeHour() + ":" + dailyForm.getTrainingEndTimeMinute());*/
+				
+				//先生に下記のコードとどっちのほうが可読性が高いのかを判断していただくため残しています
+				
+				//出勤時間をHH:mmへ形式設定
+				TrainingTime trainingStartTime = new TrainingTime(dailyForm.getTrainingStartTimeHour(),
+						dailyForm.getTrainingStartTimeMinute());
+				//形式設定した出勤時間をFormクラスへ登録
+				dailyForm.setTrainingStartTime(trainingStartTime.getFormattedString());
+				
+				//退勤時間をHH:mmへ形式設定
+				TrainingTime trainingEndTime = new TrainingTime(dailyForm.getTrainingEndTimeHour(),
+						dailyForm.getTrainingEndTimeMinute());
+				//形式設定した退勤時間をFormクラスへ登録
+				dailyForm.setTrainingEndTime(trainingEndTime.getFormattedString());
+
 			}
 		}
 		//ここまで

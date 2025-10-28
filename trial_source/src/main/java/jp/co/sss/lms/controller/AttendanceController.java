@@ -47,7 +47,7 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-		
+
 		//吉田知生 Task.25 未入力確認処理
 		boolean hasBlank = studentAttendanceService.hasBlankCheck(loginUserDto.getLmsUserId());
 
@@ -141,6 +141,7 @@ public class AttendanceController {
 
 		// 更新
 		String message = studentAttendanceService.update(attendanceForm);
+
 		model.addAttribute("message", message);
 		// 一覧の再取得
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
